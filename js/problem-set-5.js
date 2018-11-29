@@ -27,7 +27,7 @@ function mario() {
   ////////////// DO NOT MODIFY
 
   do {
-      height = prompt("Please enter an integer from 1 to 23:");
+      height = prompt("Enter an integer from 1 to 23:");
     } while (height < 1 || height > 23 || height % 1 != 0);
 
     let marioResult = document.getElementById('mario-easy-output');
