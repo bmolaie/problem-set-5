@@ -26,47 +26,31 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  do {
-      height = prompt("Enter an integer from 1 to 23:");
-    } while (height < 1 || height > 23 || height % 1 != 0);
+  while (true){
+    height=prompt("Please enter a valid height");
+    height=Number(height);
+    if(height>=1 && height<=23 && Number.isInteger(height)){
+      break;
+    };
+  };
+  let i=1;
+  let hash='#';
+  let lines="<code>";
+  let spaces=height-2;
 
-    let marioResult = document.getElementById('mario-easy-output');
-    let x = 1;
-    let space1 = "";
-    height = Number(height);
-
-    while (x < height) {
-      space1 = space1 + "&nbsp";
-      x = x + 1;
+  while (i<=height){
+    let a='';
+    for(let j=0;j<=spaces;j++) {
+      a+='&nbsp;';
     }
-
-    let hashtag = "##";
-    let result = space1 + hashtag + "<br/>";
-
-    let y = 1;
-    let z = 1;
-    let zSub = 1;
-    let space = "&nbsp";
-
-    while (y < (height - 1)) {
-      hashtag = hashtag + "#";
-      while (z < (height - 2)) {
-        space = space + "&nbsp";
-        z = z + 1;
-      }
-      result = result + space + hashtag + "<br/>";
-      space = "&nbsp";
-      z = zSub + 1;
-      zSub = zSub + 1;
-      y = y + 1;
-    }
-    while (y < height) {
-      hashtag = hashtag + "#";
-      result = result + hashtag + "<br/>";
-      y = y + 1;
-    }
-
-    marioResult.innerHTML = "<code>" + result + "</code>";
+    spaces--;
+    hash=hash+'#';
+    lines=lines+a+hash+"</br>";
+    i++;
+  }
+  document.getElementById("mario-easy-output").innerHTML=lines;
+  lines=lines+"</code>"
+  //document.GetById("mario-easy").innerHTML();
     
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
