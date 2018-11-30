@@ -235,7 +235,34 @@ let odd_sum=0;
 
 function guess() {
 
-  // WRITE YOUR EXERCISE 4 CODE HERE
+ let number=Math.floor(Math.random()*999)+1;
+  let attempts=0;
+  let correct_answer = false;
+  while (correct_answer==false) {
+    let guess=prompt('enter your guess')
+    if(guess>=1 && guess<=1000 && Number.isInteger(Number(guess))){
+      console.log("1");
+      if (number==guess){
+        attempts++;
+        correct_answer=true;
+        alert("Correct Answer!")
+        document.getElementById('guess-output').innerHTML="Number: "+number+"</br>Attempts: "+attempts;
+      }
+      else if(guess>number){
+        attempts++;
+        alert("too high")
+      }
+      else if(guess<number){
+        attempts++;
+        alert("too low")
+      }
+    }
+  }
+
+  ////////////////// DO NOT MODIFY
+  check('guess'); // DO NOT MODIFY
+  ////////////////// DO NOT MODIFY
+}
 
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
