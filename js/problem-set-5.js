@@ -26,48 +26,31 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  do {
-      height = prompt("Please enter an integer from 1 to 23:");
-    } while (height < 1 || height > 23 || height % 1 != 0);
+  while (true){
+      height=prompt("Please enter an integer between 1 and 23");
+      height=Number(height);
+      if(height>=1 && height<=23 && Number.isInteger(height)){
+        break;
+    };
+  };
+    let c=1;
+    let hashtag='#';
+    let lines="<code>";
+    let spaces=height-2;
 
-    let marioResult = document.getElementById('mario-easy-output');
-    let x = 1;
-    let space1 = "";
-    height = Number(height);
-
-    while (x < height) {
-      space1 = space1 + "&nbsp";
-      x = x + 1;
-    }
-
-    let hashtag = "##";
-    let result = space1 + hashtag + "<br/>";
-
-    let y = 1;
-    let z = 1;
-    let zSub = 1;
-    let space = "&nbsp";
-
-    while (y < (height - 1)) {
-      hashtag = hashtag + "#";
-      while (z < (height - 2)) {
-        space = space + "&nbsp";
-        z = z + 1;
+    while (c<=height){
+      let a='';
+      for(let b=0;b<=spaces;b++) {
+        a+='&nbsp;';
       }
-      result = result + space + hashtag + "<br/>";
-      space = "&nbsp";
-      z = zSub + 1;
-      zSub = zSub + 1;
-      y = y + 1;
+      spaces--;
+      hashtag=hashtag+'#';
+      lines=lines+a+hashtag+"</br>";
+      c++;
     }
-    while (y < height) {
-      hashtag = hashtag + "#";
-      result = result + hashtag + "<br/>";
-      y = y + 1;
-    }
+    document.getElementById("mario-easy-output").innerHTML=lines;
+    lines=lines+"</code>"
 
-    marioResult.innerHTML = "<code>" + result + "</code>";
-    
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
   ////////////////////////// DO NOT MODIFY
@@ -101,7 +84,30 @@ function marioAgain() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 2 CODE HERE
+  while (true){
+      height=prompt("Please enter an integer between 1 and 23");
+      height=Number(height);
+    if(height>=1 && height<=23 && Number.isInteger(height)){
+      break;
+    };
+  };
+  let c=1;
+  let hashtag='#';
+  let lines="<code>";
+  let spacesBefore=height-2;
+  let spacesAfter='&nbsp'+'&nbsp';
+  while (c<=height){
+    let a='';
+    for(let b=0;b<=spacesBefore;b++) {
+      a+='&nbsp;';
+    }
+    spacesBefore--;
+    hashtag=hashtag+'#';
+    lines=lines+a+hashtag+spacesAfter+hashtag+"</br>";
+    c++;
+  }
+  document.getElementById("mario-hard-output").innerHTML=lines;
+  lines=lines+"</code>"
 
   //////////////////////////////// DO NOT MODIFY
   check('mario-again', height); // DO NOT MODIFY
@@ -154,7 +160,43 @@ function credit() {
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 3 CODE HERE
+  let odd=0;
+    let even=0;
+    while (true){
+      card=prompt("Enter your credit card number: ");
+      if ((card.length==16 || card.length==15 || card.length==13) && Number.isInteger(Number(card))){
+        break;
+      }
+    }
+    for(let c=card.length-2;c>=0;c-=2) {
+      let num=Number(card[c])*2;
+      let strnum=num.toString();
+      let sum=0;
+      for (let b=0;b<strnum.length;b++){
+        sum=sum+Number(strnum[b]);
+      }
+      even=sum+even;
+      console.log(even);
+    }
+    for(let a=card.length-1; a>=0;a-=2){
+      odd=odd+Number(card[a])
+    }
+    console.log(odd);
+
+    if (card.length==15 && (card[0]==3 &&(card[1]==7 || card[1]==4)) && (odd+even)%10==0){
+      document.getElementById("credit-output").innerHTML="<img src ='./images/amex.png'/>";
+    }
+    else if ((card.length==13 || card.length==16) && card[0]==4 && (odd+even)%10==0){
+      document.getElementById("credit-output").innerHTML="<img src ='./images/visa.png'/>";
+    }
+    else if (card.length==16 && (card[0]==5 && (card[1]==1 || card[1]==2 || card[1]==4 || card[1]==5)) && (odd+even)%10==0){
+      document.getElementById("credit-output").innerHTML="<img src ='./images/mastercard.png'/>";
+    }
+    else {
+      document.getElementById("credit-output").innerHTML="<img src ='./images/invalid.png'/>";
+    }
+
+    card=Number(card);
 
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
@@ -193,7 +235,29 @@ function credit() {
 
 function guess() {
 
-  // WRITE YOUR EXERCISE 4 CODE HERE
+  let number=Math.floor(Math.random()*999)+1;
+    let attempts=0;
+    let correctAnswer = false;
+    while (correctAnswer==false) {
+    let guess=prompt('Enter an integer between 1 and 1000')
+    if(guess>=1 && guess<=1000 && Number.isInteger(Number(guess))){
+        console.log("1");
+        if (number==guess){
+          attempts++;
+          correctAnswer=true;
+          alert("Correct Answer!")
+          document.getElementById('guess-output').innerHTML="Number: "+number+"</br>Attempts: "+attempts;
+        }
+        else if(guess>number){
+          attempts++;
+          alert("Your guess is too high")
+        }
+        else if(guess<number){
+          attempts++;
+          alert("Your guess is too low")
+        }
+      }
+    }
 
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
