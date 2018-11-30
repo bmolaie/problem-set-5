@@ -85,7 +85,30 @@ function marioAgain() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 2 CODE HERE
+ while (true){
+    height=prompt("Please enter a valid height");
+    height=Number(height);
+    if(height>=1 && height<=23 && Number.isInteger(height)){
+      break;
+    };
+  };
+  let i=1;
+  let hash='#';
+  let lines="<code>";
+  let spaces_Before=height-2;
+  let spaces_After='&nbsp'+'&nbsp';
+  while (i<=height){
+    let a='';
+    for(let j=0;j<=spaces_Before;j++) {
+      a+='&nbsp;';
+    }
+    spaces_Before--;
+    hash=hash+'#';
+    lines=lines+a+hash+spaces_After+hash+"</br>";
+    i++;
+  }
+  document.getElementById("mario-hard-output").innerHTML=lines;
+  lines=lines+"</code>"
 
   //////////////////////////////// DO NOT MODIFY
   check('mario-again', height); // DO NOT MODIFY
