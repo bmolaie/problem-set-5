@@ -161,8 +161,43 @@ function credit() {
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 3 CODE HERE
+let odd_sum=0;
+  let even_sum=0;
+  while (true){
+    card=prompt("Enter your credit card number: ");
+    if ((card.length==16 || card.length==15 || card.length==13) && Number.isInteger(Number(card))){
+      break;
+    }
+  }
+  for(let i=card.length-2;i>=0;i-=2) {
+    let num=Number(card[i])*2;
+    let strnum=num.toString();
+    let sum_num=0;
+    for (let j=0;j<strnum.length;j++){
+      sum_num=sum_num+Number(strnum[j]);
+    }
+    even_sum=sum_num+even_sum;
+    console.log(even_sum);
+  }
+  for(let k=card.length-1; k>=0;k-=2){
+    odd_sum=odd_sum+Number(card[k])
+  }
+  console.log(odd_sum);
 
+  if (card.length==15 && (card[0]==3 &&(card[1]==7 || card[1]==4)) && (odd_sum+even_sum)%10==0){
+    document.getElementById("credit-output").innerHTML="<img src ='./images/amex.png'/>";
+  }
+  else if ((card.length==13 || card.length==16) && card[0]==4 && (odd_sum+even_sum)%10==0){
+    document.getElementById("credit-output").innerHTML="<img src ='./images/visa.png'/>";
+  }
+  else if (card.length==16 && (card[0]==5 && (card[1]==1 || card[1]==2 || card[1]==4 || card[1]==5)) && (odd_sum+even_sum)%10==0){
+    document.getElementById("credit-output").innerHTML="<img src ='./images/mastercard.png'/>";
+  }
+  else {
+    document.getElementById("credit-output").innerHTML="<img src ='./images/invalid.png'/>";
+  }
+
+  card=Number(card);
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
    *       variable, do not modify it. If you find it necessary to manipulate
