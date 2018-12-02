@@ -290,23 +290,27 @@ function hurricane() {
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
 
-  windspeed = Number(prompt("Enter Hurricane Windspeed"));
-  if (windspeed>=0 && windspeed<=38){
-    document.getElementById("hurricane-output").innerHTML = ("The skies are calm...")
-  } else if (windspeed>=39 && windspeed<=73){
-    document.getElementById("hurricane-output").innerHTML = ("Tropical Storm.")
-  } else if (windspeed>=74 && windspeed<=95){
-    document.getElementById("hurricane-output").innerHTML = ("Category 1 Hurricane.")
-  } else if (windspeed>=96 && windspeed<=110){
-    document.getElementById("hurricane-output").innerHTML = ("Category 2 Hurricane.")
-  } else if (windspeed>=111 && windspeed<=129){
-    document.getElementById("hurricane-output").innerHTML = ("Category 3 Hurricane.")
-  } else if (windspeed>=130 && windspeed<=156){
-    document.getElementById("hurricane-output").innerHTML = ("Category 4 Hurricane.")
-  } else if (windspeed>=157){
-    document.getElementById("hurricane-output").innerHTML = ("Category 5 Hurricane.")
-  } else {
-    Number(prompt("Enter Hurricane Windspeed"));
+do {
+    windspeed = prompt("Please input an integer wind speed greater or equal to 0:")
+  } while ((Number(windspeed) % 1) != 0 || Number(windspeed) <= 0);
+
+  windspeed = Number(windspeed);
+  let hurricaneOutput = document.getElementById('hurricane-output');
+
+  if (windspeed >= 157) {
+    hurricaneOutput.innerHTML = "Category 5 Hurricane.";
+  } else if (windspeed >= 130 && windspeed < 157) {
+    hurricaneOutput.innerHTML = "Category 4 Hurricane.";
+  } else if (windspeed >= 111 && windspeed < 130) {
+    hurricaneOutput.innerHTML = "Category 3 Hurricane.";
+  } else if (windspeed >= 96 && windspeed < 111) {
+    hurricaneOutput.innerHTML = "Category 2 Hurricane.";
+  } else if (windspeed >= 74 && windspeed < 96) {
+    hurricaneOutput.innerHTML = "Category 1 Hurricane.";
+  } else if (windspeed >= 39 && windspeed < 74) {
+    hurricaneOutput.innerHTML = "Tropical Storm.";
+  } else if (windspeed < 39) {
+    hurricaneOutput.innerHTML = "The skies are calm...";
   }
   
   ///////////////////////////////// DO NOT MODIFY
