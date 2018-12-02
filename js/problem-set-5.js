@@ -292,10 +292,6 @@ function hurricane() {
 
   windspeed = prompt("Want to see some magic? Enter a positive windspeed as an integer and I'll tell you what it's categorized as.");
 
-  while (windspeed < 0 || !Number.isInteger(Number(windspeed)) || windspeed == " ") {
-    windspeed = prompt("Hey stupid! I said enter a non-negtive integer.");
-  }
-
   if (windspeed >= 157) {
     let cat5 = document.getElementById("hurricane-output");
     cat5.innerHTML = "Category 5";
@@ -348,7 +344,8 @@ function gymnastics() {
   let total = 0; //// DO NOT MODIFY
   let scores = []; // DO NOT MODIFY
   /////////////////// DO NOT MODIFY
-let firstScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the first score"));
+  
+  let firstScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the first score"));
   let secondScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the second score"));
   let thirdScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the third score"));
   let fourthScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the fourth score"));
