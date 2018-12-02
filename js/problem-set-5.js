@@ -290,30 +290,34 @@ function hurricane() {
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
 
-  do {
-    windspeed = Number(prompt("What is the windspeed of the hurricane?"));
-  } while (windspeed < 0);
+  windspeed = prompt("Want to see some magic? Enter a positive windspeed as an integer and I'll tell you what it's categorized as.");
 
-  let cat = "";
-
-  if (windspeed >= 157){
-    cat = "Category 5 Hurricane.";
-  } else if (windspeed < 157 && windspeed >= 130) {
-    cat = "Category 4 Hurricane.";
-  } else if (windspeed < 130 && windspeed >= 111) {
-    cat = "Category 3 Hurricane.";
-  } else if (windspeed < 111 && windspeed >= 96) {
-    cat = "Category 2 Hurricane.";
-  } else if (windspeed < 96 && windspeed >= 74) {
-    cat = "Category 1 Hurricane.";
-  } else if (windspeed < 74 && windspeed >= 39) {
-    cat = "Tropical Storm.";
-  } else {
-    cat = "The skies are calm...";
+  while (windspeed < 0 || !Number.isInteger(Number(windspeed)) || windspeed == " ") {
+    windspeed = prompt("Hey stupid! I said enter a non-negtive integer.");
   }
 
-  let op = document.getElementById("hurricane-output");
-  op.innerHTML = cat;
+  if (windspeed >= 157) {
+    let cat5 = document.getElementById("hurricane-output");
+    cat5.innerHTML = "Category 5";
+  } else if (windspeed >= 130) {
+    let cat4 = document.getElementById("hurricane-output");
+    cat4.innerHTML = "Category 4";
+  } else if (windspeed >= 111) {
+    let cat3 = document.getElementById("hurricane-output");
+    cat3.innerHTML = "Category 3";
+  } else if (windspeed >= 96) {
+    let cat2 = document.getElementById("hurricane-output");
+    cat2.innerHTML = "Category 2";
+  } else if (windspeed >= 74) {
+    let cat1 = document.getElementById("hurricane-output");
+    cat1.innerHTML = "Category 1";
+  } else if (windspeed >= 39) {
+    let tropStorm = document.getElementById("hurricane-output");
+    tropStorm.innerHTML = "Tropical Storm";
+  } else {
+    let p = document.getElementById("hurricane-output");
+    p.innerHTML = "Wind is not strong enough";
+  }
   
   ///////////////////////////////// DO NOT MODIFY
   check('hurricane', windspeed); // DO NOT MODIFY
