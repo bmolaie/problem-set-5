@@ -235,29 +235,25 @@ function credit() {
 
 function guess() {
 
-  let number=Math.floor(Math.random()*999)+1;
-    let attempts=0;
-    let correctAnswer = false;
-    while (correctAnswer==false) {
-    let guess=prompt('Enter an integer between 1 and 1000')
-    if(guess>=1 && guess<=1000 && Number.isInteger(Number(guess))){
-        console.log("1");
-        if (number==guess){
-          attempts++;
-          correctAnswer=true;
-          alert("Correct Answer!")
-          document.getElementById('guess-output').innerHTML="Number: "+number+"</br>Attempts: "+attempts;
-        }
-        else if(guess>number){
-          attempts++;
-          alert("Your guess is too high")
-        }
-        else if(guess<number){
-          attempts++;
-          alert("Your guess is too low")
-        }
-      }
-    }
+  let answer = Math.floor((Math.random() * 1000) + 1);
+  console.log(answer);
+
+  let guess = prompt("Enter a guess of a random integer between 1 and 1000");
+
+  let tries = 1;
+  while (guess != answer) {
+    if (guess > answer && guess > 0  && guess <= 1000 && Number.isInteger(Number(guess))) {
+      guess = prompt("Your guess was too high. Try again.");
+      tries++;
+    } else if (guess < answer && guess > 0 && Number.isInteger(Number(guess))) {
+      guess = prompt("Your guess was too low. Try again.");
+      tries++;
+    } 
+  }
+  if (guess == answer) {
+    let correct = document.getElementById("guess-output");
+    correct.innerHTML = "Correct Answer! It took you " + tries + " tries!";
+  }
 
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
