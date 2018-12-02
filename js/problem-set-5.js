@@ -291,6 +291,11 @@ function hurricane() {
   ///////////////// DO NOT MODIFY
 
   windspeed=Number(prompt('Enter the Windspeed'));
+  
+  while (windspeed < 0 || !Number.isInteger(Number(windspeed)) || windspeed == " ") {
+    windspeed = prompt("Hey stupid! I said enter a non-negtive integer.");
+  }
+  
   if (windspeed >= 157) {
     let windspeed5 = document.getElementById("hurricane-output");
     cat5.innerHTML = "Category 5";
