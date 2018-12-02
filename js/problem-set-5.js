@@ -289,7 +289,7 @@ function hurricane() {
   ///////////////// DO NOT MODIFY
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
-   windspeed=Number(prompt('enter your windspeed'));
+  windspeed=Number(prompt('enter your windspeed'));
   if (windspeed>=157){
     document.getElementById('hurricane-output').innerHTML='Category 5 Hurricane.';
   }
