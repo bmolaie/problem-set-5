@@ -290,33 +290,33 @@ function hurricane() {
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
 
-  windspeed=Number(prompt('Enter the Windspeed'));
-  
+ windspeed = prompt("Want to see some magic? Enter a positive windspeed as an integer and I'll tell you what it's categorized as.");
+
   while (windspeed < 0 || !Number.isInteger(Number(windspeed)) || windspeed == " ") {
     windspeed = prompt("Hey stupid! I said enter a non-negtive integer.");
   }
-  
+
   if (windspeed >= 157) {
-    let windspeed5 = document.getElementById("hurricane-output");
+    let cat5 = document.getElementById("hurricane-output");
     cat5.innerHTML = "Category 5";
   } else if (windspeed >= 130) {
-    let windspeed4 = document.getElementById("hurricane-output");
+    let cat4 = document.getElementById("hurricane-output");
     cat4.innerHTML = "Category 4";
   } else if (windspeed >= 111) {
-    let windspeed3 = document.getElementById("hurricane-output");
+    let cat3 = document.getElementById("hurricane-output");
     cat3.innerHTML = "Category 3";
   } else if (windspeed >= 96) {
-    let windspeed2 = document.getElementById("hurricane-output");
+    let cat2 = document.getElementById("hurricane-output");
     cat2.innerHTML = "Category 2";
   } else if (windspeed >= 74) {
-    let windspeed1 = document.getElementById("hurricane-output");
+    let cat1 = document.getElementById("hurricane-output");
     cat1.innerHTML = "Category 1";
   } else if (windspeed >= 39) {
     let tropStorm = document.getElementById("hurricane-output");
     tropStorm.innerHTML = "Tropical Storm";
   } else {
     let p = document.getElementById("hurricane-output");
-    p.innerHTML = "The Wind is Calm";
+    p.innerHTML = "Wind is not strong enough";
   }
   
   ///////////////////////////////// DO NOT MODIFY
