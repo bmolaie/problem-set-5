@@ -289,28 +289,24 @@ function hurricane() {
   ///////////////// DO NOT MODIFY
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
-  windspeed=Number(prompt('enter your windspeed'));
+  
+  windspeed=Number(prompt('Enter the Windspeed'));
   if (windspeed>=157){
-    document.getElementById('hurricane-output').innerHTML='Category 5 Hurricane.';
+    document.getElementById('hurricane-output').innerHTML='Category 5 Hurricane';
+  }else if (windspeed>=130){
+    document.getElementById('hurricane-output').innerHTML='Category 4 Hurricane';
+  }else if (windspeed>=111){
+    document.getElementById('hurricane-output').innerHTML='Category 3 Hurricane';
+  }else if (windspeed>=96){
+    document.getElementById('hurricane-output').innerHTML='Category 2 Hurricane';
+  }else if (windspeed>=74){
+    document.getElementById('hurricane-output').innerHTML='Category 1 Hurricane';
+  }else if (windspeed>=39){
+    document.getElementById('hurricane-output').innerHTML='Tropical Storm';
+  }else if (windspeed<=38){
+    document.getElementById('hurricane-output').innerHTML='The Wind is Not Strong';
   }
-  else if (windspeed>=130){
-    document.getElementById('hurricane-output').innerHTML='Category 4 Hurricane.';
-  }
-  else if (windspeed>=111){
-    document.getElementById('hurricane-output').innerHTML='Category 3 Hurricane.';
-  }
-  else if (windspeed>=96){
-    document.getElementById('hurricane-output').innerHTML='Category 2 Hurricane.';
-  }
-  else if (windspeed>=74){
-    document.getElementById('hurricane-output').innerHTML='Category 1 Hurricane.';
-  }
-  else if (windspeed>=39){
-    document.getElementById('hurricane-output').innerHTML='Tropical Storm.';
-  }
-  else if (windspeed<=38){
-    document.getElementById('hurricane-output').innerHTML='The skies are calm...';
-  }
+  
   ///////////////////////////////// DO NOT MODIFY
   check('hurricane', windspeed); // DO NOT MODIFY
   ///////////////////////////////// DO NOT MODIFY
@@ -354,7 +350,6 @@ function gymnastics() {
   scores.push(fourthScore);
   scores.push(fifthScore);
   scores.push(sixthScore);
-//checks to see if first score is an integer
   while (Number(firstScore) < 1.0 || Number(firstScore) > 10.0 || !Number.isInteger(Number(firstScore))) {
     firstScore = (Number.isInteger(firstScore))? firstScore = firstScore : prompt("Stupid! Enter a number between 1.0 and 10.0 as the first score");
     scores.splice(0, 1, Number(firstScore));
