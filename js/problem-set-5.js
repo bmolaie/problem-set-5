@@ -348,7 +348,83 @@ function gymnastics() {
   let total = 0; //// DO NOT MODIFY
   let scores = []; // DO NOT MODIFY
   /////////////////// DO NOT MODIFY
+let firstScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the first score"));
+  let secondScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the second score"));
+  let thirdScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the third score"));
+  let fourthScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the fourth score"));
+  let fifthScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the fifth score"));
+  let sixthScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the sixth score"));
 
+  scores.push(firstScore);
+  scores.push(secondScore);
+  scores.push(thirdScore);
+  scores.push(fourthScore);
+  scores.push(fifthScore);
+  scores.push(sixthScore);
+//checks to see if first score is an integer
+  while (Number(firstScore) < 1.0 || Number(firstScore) > 10.0 || !Number.isInteger(Number(firstScore))) {
+    firstScore = (Number.isInteger(firstScore))? firstScore = firstScore : prompt("Stupid! Enter a number between 1.0 and 10.0 as the first score");
+    scores.splice(0, 1, Number(firstScore));
+  }
+
+  while (Number(secondScore) < 1.0 || Number(secondScore) > 10.0 || !Number.isInteger(Number(secondScore))) {
+    secondScore = (Number.isInteger(secondScore))? secondScore = firstScore : prompt("Stupid! Enter a number between 1.0 and 10.0 as the first score");
+    scores.splice(1, 1, Number(secondScore));
+  }
+
+  while (Number(thirdScore) < 1.0 || Number(thirdScore) > 10.0 || !Number.isInteger(Number(thirdScore))) {
+    thirdScore = (Number.isInteger(thirdScore))? thirdScore = thirdScore : prompt("Stupid! Enter a number between 1.0 and 10.0 as the first score");
+    scores.splice(2, 1, Number(thirdScore));
+  }
+
+  while (Number(fourthScore) < 1.0 || Number(fourthScore) > 10.0 || !Number.isInteger(Number(fourthScore))) {
+    fourthScore = (Number.isInteger(fourthScore))? fourthScore = fourthScore : prompt("Stupid! Enter a number between 1.0 and 10.0 as the first score");
+    scores.splice(3, 1, Number(fourthScore));
+  }
+
+  while (Number(fifthScore) < 1.0 || Number(fifthScore) > 10.0 || !Number.isInteger(Number(fifthScore))) {
+    fifthScore = (Number.isInteger(fifthScore))? fifthScore = fifthScore : prompt("Stupid! Enter a number between 1.0 and 10.0 as the first score");
+    scores.splice(4, 1, Number(fifthScore));
+  }
+
+
+  while (Number(sixthScore) < 1.0 || Number(sixthScore) > 10.0 || !Number.isInteger(Number(sixthScore))) {
+    sixthScore = (Number.isInteger(sixthScore))? sixthScore = sixthScore : prompt("Stupid! Enter a number between 1.0 and 10.0 as the first score");
+    scores.splice(5, 1, Number(sixthScore));
+  }
+
+  console.log(scores);
+
+  total = firstScore + secondScore + thirdScore + fourthScore + fifthScore + sixthScore;
+  console.log(total);
+
+
+  let minimum = Math.min(...scores);
+  let maximum = Math.max(...scores);
+  console.log(minimum);
+  console.log(maximum);
+
+  let minimumIndex = scores.indexOf(minimum);
+  let maximumIndex = scores.indexOf(maximum);
+  console.log(minimumIndex);
+
+  scores.splice(maximumIndex, 1);
+  let discarded = scores.splice(minimumIndex, 1);
+  console.log(scores);
+  console.log(discarded);
+
+  let newTotal = 0;
+  for (let i = 0; i > scores.length; i++) {
+    newTotal += scores.indexOf[i];
+  }
+  console.log(newTotal);
+
+  let finalAverage = newTotal / scores.length;
+
+  let score = document.getElementById("gymnastics-output");
+  score.innerHTML = "Discarded: " + maximum + ", " + minimum + "<br/>Score: " + finalAverage;
+
+  
   /*
    * NOTE: The 'total' variable should be representative of the sum of all
    *       six of the judges' scores.
