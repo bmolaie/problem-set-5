@@ -332,23 +332,23 @@ function gymnastics() {
 let score;
 let total2=0;
 let discarded = [];
-let k;
+let a;
 let p = document.getElementById("gymnastics-output");
-for(let i = 0; i<6; i++){
-  k=0
+for(let b = 0; b<6; b++){
+  a=0
   score = -1;
   while (score<0 || score>10 || score*10%1!=0){
-    if(k==1){
-    score=Number(prompt("Your last input was invalid. Choose a score from 0.0 to 10.0."));
+    if(a==1){
+    score=Number(prompt("Invalid. Re-enter a score from 0.0 to 10.0."));
   }else{
-    score=Number(prompt("Choose a score from 0.0 to 10.0."));
+    score=Number(prompt("Enter a Score from 0.0 to 10.0."));
   }
-    k=1
+    a=1
   }
   scores.push(score);
 }
-for(let j = 0; j<6; j++){
-  total+=scores[j];
+for(let c = 0; c<6; c++){
+  total+=scores[c];
 }
 total2=total;
 discarded.push(Math.min(...scores));
@@ -405,42 +405,50 @@ function reportCard() {
   let homeworkTotal = 0; // DO NOT MODIFY
   ///////////////////////// DO NOT MODIFY
 
-let testGrade;
-   let quizGrade;
-   let homeworkGrade;
-   while(testGrade!=Number("-1")){
-     testGrade=Number(prompt("Please Enter a Test Grade between 0.0 to 100.0. Type '-1' to Signify that there are No More Grades to Enter."));
-     if(testGrade!=Number("-1")){
-       while(testGrade > 100 || testGrade < 0){
-         testGrade=Number(prompt("Re-enter the Test Grade on a Scale of 0.0 to 100.00"))
-       }
-       tests++;
-       testTotal+=testGrade;
-     }else{}
-   }
-   while(quizGrade!=Number("-1")){
-     quizGrade=Number(prompt("Enter a Quiz Grade. Type '-1' to Signify that there are No More Grades to Enter."));
-     if(quizGrade!=Number("-1")){
-       while(quizGrade > 100 || quizGrade < 0){
-         quizGrade=Number(prompt("Re-enter the Quiz Grade on a Scale of 0.0 to 100.00"))
-       }
-       quizzes++;
-       quizTotal+=quizGrade;
-     }else{}
-   }
-   while(homeworkGrade!=Number("-1")){
-     homeworkGrade=Number(prompt("Enter a Homework Grade. Type '-1' to Signify that there are No More Grades to Enter."));
-     if(homeworkGrade!=Number("-1")){
-       while(homeworkGrade > 100 || homeworkGrade < 0){
-         homeworkGrade=Number(prompt("Re-enter the Homework Grade on a Scale of 0.0 to 100.00"))
-       }
-       homeworks++;
-       homeworkTotal+=homeworkGrade;
-     }else{}
-   }
-   let p = document.getElementById("report-card-output");
-   let average = (((testTotal/tests)*.6) + ((quizTotal/quizzes)*.3) + ((homeworkTotal/homeworks)*.1)).toFixed(2);
-   p.innerHTML = "Tests: " + (testTotal/tests).toFixed(2) + "<br/>" + "Quizzes: " + (quizTotal/quizzes).toFixed(2) + "<br/>" + "Homework: " + (homeworkTotal/homeworks).toFixed(2) + "<br/>" + "Grade: " + average;
+let addTest;
+tests = -1;
+for(testTotal = 1; addTest != -1; testTotal = testTotal + addTest){
+  addTest = prompt(`Input a number TEST grade from 0.0 to 100.0. When completed type "-1".`);
+    for(addTest = addTest; addTest < 0 && addTest != -1 || addTest > 100; addTest = addTest){
+      addTest = prompt(`PLEASE input a VALID number TEST grade from 0 to 100. When completed type "-1".`);
+    }
+  addTest = parseInt(addTest);
+  tests = tests + 1;
+}
+let testAverage = testTotal / tests;
+testAverage = testAverage.toFixed(2);
+
+let addQuiz;
+quizzes = -1;
+for(quizTotal = 1; addQuiz != -1; quizTotal = quizTotal + addQuiz){
+  addQuiz = prompt(`Input a number QUIZ grade from 0.0 to 100.0. When completed type "-1".`);
+    for(addQuiz = addQuiz; addQuiz < 0 && addQuiz != -1 || addQuiz > 100; addQuiz = addQuiz){
+      addQuiz = prompt(`PLEASE input a VALID number QUIZ grade from 0 to 100. When completed type "-1".`);
+    }
+  addQuiz = parseInt(addQuiz);
+  quizzes = quizzes + 1;
+}
+let quizAverage = quizTotal / quizzes;
+quizAverage = quizAverage.toFixed(2);
+
+let addHW;
+homeworks = -1;
+for(homeworkTotal = 1; addHW != -1; homeworkTotal = homeworkTotal + addHW){
+  addHW = prompt(`Input a number HOMEWORK grade from 0.0 to 100.0. When completed type "-1".`);
+    for(addHW = addHW; addHW < 0 && addHW != -1 || addHW > 100; addHW = addHW){
+      addHW = prompt(`PLEASE input a VALID number HOMEWORK grade from 0 to 100. When completed type "-1".`);
+    }
+  addHW = parseInt(addHW);
+  homeworks = homeworks + 1;
+}
+let homeworkAverage = homeworkTotal / homeworks;
+homeworkAverage = homeworkAverage.toFixed(2);
+
+let grade = (testAverage * 0.6) + (quizAverage * 0.3) + (homeworkAverage * 0.1);
+grade = grade.toFixed(2);
+
+var div=document.getElementById('report-card-output');
+div.innerHTML=(`Tests: ${testAverage}</br>Quizzes: ${quizAverage}</br>Homework: ${homeworkAverage}</br>Grade: ${grade}`);
   
   /*
    * NOTE: The 'testTotal', 'quizTotal', and 'homeworkTotal' variables
