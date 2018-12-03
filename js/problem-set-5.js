@@ -226,7 +226,7 @@ function guess() {
   let answer = Math.floor((Math.random() * 1000) + 1);
   console.log(answer);
 
-  let guess = prompt("Enter a guess of a random integer between 1 and 1000");
+  let guess = prompt("Guess of a Random Integer between 1 and 1000");
 
   let tries = 1;
   while (guess != answer) {
