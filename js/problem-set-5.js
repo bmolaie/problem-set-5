@@ -292,15 +292,15 @@ function hurricane() {
   
   windspeed=Number(prompt('Enter the Windspeed'));
   if (windspeed>=157){
-    document.getElementById('hurricane-output').innerHTML='Category 5 Hurricane';
+    document.getElementById('hurricane-output').innerHTML='Category 5 Hurricane.';
   }else if (windspeed>=130){
-    document.getElementById('hurricane-output').innerHTML='Category 4 Hurricane';
+    document.getElementById('hurricane-output').innerHTML='Category 4 Hurricane.';
   }else if (windspeed>=111){
-    document.getElementById('hurricane-output').innerHTML='Category 3 Hurricane';
+    document.getElementById('hurricane-output').innerHTML='Category 3 Hurricane.';
   }else if (windspeed>=96){
-    document.getElementById('hurricane-output').innerHTML='Category 2 Hurricane';
+    document.getElementById('hurricane-output').innerHTML='Category 2 Hurricane.';
   }else if (windspeed>=74){
-    document.getElementById('hurricane-output').innerHTML='Category 1 Hurricane';
+    document.getElementById('hurricane-output').innerHTML='Category 1 Hurricane.';
   }else if (windspeed>=39){
     document.getElementById('hurricane-output').innerHTML='Tropical Storm';
   }else if (windspeed<=38){
