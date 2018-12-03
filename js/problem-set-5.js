@@ -405,43 +405,42 @@ function reportCard() {
   let homeworkTotal = 0; // DO NOT MODIFY
   ///////////////////////// DO NOT MODIFY
 
-let p = document.getElementById("report-card-output");
-  let grade = -2;
-  while(grade!=-1){
-    while((grade<0 || grade>100 || grade*10%1!=0) && grade!=-1){
-      grade = Number(prompt("Enter a test grade from 0.0 to 100.0."));
-    }
-    if(grade!=-1){
-      tests++;
-      testTotal+=grade;
-      grade=-2   ;
-    }
-  }
-  grade=-2;
-  while(grade!=-1){
-    while((grade<0 || grade>100 || grade*10%1!=0) && grade!=-1){
-      grade = Number(prompt("Enter a quiz grade from 0.0 to 100.0."))
-    }
-    if(grade!=-1){
-      quizzes++;
-      quizTotal+=grade;
-      grade=-2;
-    }
-  }
-  grade=-2;
-  while(grade!=-1){
-    while((grade<0 || grade>100 || grade*10%1!=0) && grade!=-1){
-      grade = Number(prompt("Enter a homework grade from 0.0 to 100.0."))
-    }
-    if(grade!=-1){
-      homeworks++;
-      homeworkTotal+=grade;
-      grade=-2;
-    }
-  }
-  let gradeAverage=testTotal*0.6/tests+quizTotal*0.3/quizzes+homeworkTotal*0.1/homeworks;
-  let result = `Tests: ${(testTotal/tests).toFixed(2)}<br/>Quizzes: ${(quizTotal/quizzes).toFixed(2)}<br/>Homework: ${(homeworkTotal/homeworks).toFixed(2)}<br/>Grade: ${gradeAverage.toFixed(2)}`;
-  p.innerHTML=result;
+let testGrade;
+   let quizGrade;
+   let homeworkGrade;
+   while(testGrade!=Number("-1")){
+     testGrade=Number(prompt("Please enter your test grade. Type '-1' to signify that you have no more grades to enter."));
+     if(testGrade!=Number("-1")){
+       while(testGrade > 100 || testGrade < 0){
+         testGrade=Number(prompt("Please reenter your test grade. Remember, it must be on a scale from 1 to 100."))
+       }
+       tests++;
+       testTotal+=testGrade;
+     }else{}
+   }
+   while(quizGrade!=Number("-1")){
+     quizGrade=Number(prompt("Please enter your quiz grade. Type '-1' to signify that you have no more grades to enter."));
+     if(quizGrade!=Number("-1")){
+       while(quizGrade > 100 || quizGrade < 0){
+         quizGrade=Number(prompt("Please reenter your quiz grade. Remember, it must be on a scale from 1 to 100."))
+       }
+       quizzes++;
+       quizTotal+=quizGrade;
+     }else{}
+   }
+   while(homeworkGrade!=Number("-1")){
+     homeworkGrade=Number(prompt("Please enter your homework grade. Type '-1' to signify that you have no more grades to enter."));
+     if(homeworkGrade!=Number("-1")){
+       while(homeworkGrade > 100 || homeworkGrade < 0){
+         homeworkGrade=Number(prompt("Please reenter your homework grade. Remember, it must be on a scale from 1 to 100."))
+       }
+       homeworks++;
+       homeworkTotal+=homeworkGrade;
+     }else{}
+   }
+   let p = document.getElementById("report-card-output");
+   let average = (((testTotal/tests)*.6) + ((quizTotal/quizzes)*.3) + ((homeworkTotal/homeworks)*.1)).toFixed(2);
+   p.innerHTML = "Tests: " + (testTotal/tests).toFixed(2) + "<br/>" + "Quizzes: " + (quizTotal/quizzes).toFixed(2) + "<br/>" + "Homework: " + (homeworkTotal/homeworks).toFixed(2) + "<br/>" + "Grade: " + average;
   
   /*
    * NOTE: The 'testTotal', 'quizTotal', and 'homeworkTotal' variables
