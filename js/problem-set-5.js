@@ -26,7 +26,7 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  while (true){
+  while (true){ 
       height=prompt("Please enter an integer between 1 and 23");
       height=Number(height);
       if(height>=1 && height<=23 && Number.isInteger(height)){
