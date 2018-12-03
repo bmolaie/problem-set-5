@@ -165,11 +165,11 @@ function credit() {
   let sum=0;
   let cardNumber;
     for(let a=card.length-2; a >= 0; a -= 2){
-      if((Number(card[i]))*2 > 9){
+      if((Number(card[a]))*2 > 9){
         cardNumber = String(Number(card[a])*2);
         sum += Number(cardNumber[0]) + Number(cardNumber[1]);
       }else{
-        sum += Number(card[i])*2;
+        sum += Number(card[a])*2;
       }
     }
     for(a=card.length-1; a >= 0; a -= 2){
