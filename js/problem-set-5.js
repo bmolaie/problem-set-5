@@ -32,7 +32,7 @@ function mario() {
       if(height>=1 && height<=23 && Number.isInteger(height)){
         break;
     };
-  };
+  }; 
     let c=1;
     let hashtag='#';
     let lines="<code>";
