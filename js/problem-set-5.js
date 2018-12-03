@@ -160,31 +160,33 @@ function credit() {
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
 
-  card=prompt("Enter a Credit Card Number");
-  let p=document.getElementById("credit-output");
-  let sum=0;
-  let cardNumber;
-    for(let a=card.length-2; a >= 0; a -= 2){
-      if((Number(card[a]))*2 > 9){
-        cardNumber = String(Number(card[a])*2);
-        sum += Number(cardNumber[0]) + Number(cardNumber[1]);
-      }else{
-        sum += Number(card[a])*2;
-      }
+card=prompt("Enter a Credit Card Number.");
+let p=document.getElementById("credit-output");
+let sum=0;
+for(let a = 0; a<cardLength; a++){
+  if(a%2==cardLength%2){
+    if(card[a]>=5){
+      sum+=Number(card[a])*2-9;
+    }else{
+      sum+=Number(card[a])*2;
     }
-    for(a=card.length-1; a >= 0; a -= 2){
-      sum += Number(card[a]);
-    }
-  if(card.length == 15 && card[0] == "3" && card[1] == "4" && sum%10==0 || card.length == 15 && card[0] == "3" && card[1]=="7" && sum%10==0){
-    p.innerHTML = "<img src='images/amex.png'>";
-  }else if(card.length == 16 && card[0] == "5" && card[1]>="1" && card[1]<="5" && sum%10==0){
-    p.innerHTML = "<img src='images/mastercard.png'>";
-  }else if(card[0] == "4" && card.length == 13 && sum%10 == 0 || card[0] == "4" && card.length == 16 && sum % 10 == 0){
-    p.innerHTML = "<img src='images/visa.png'>";
   }else{
-    p.innerHTML = "<img src='images/invalid.png'>";
+    sum+=Number(card[a]);
   }
-  card = Number(card);
+}
+sum%=10;
+if(sum!=0){
+  p.innerHTML='<img src="images/invalid.png"/>';
+}else if(cardLength==15 && card[0]==3 && (card[1]==4 || card[1]==7)){
+  p.innerHTML='<img src="images/amex.png"/>';
+}else if(cardLength==16 && card[0]==5 && 0<card[1]<6){
+  p.innerHTML='<img src="images/mastercard.png"/>';
+}else if((cardLength==13 || cardLength==16) && card[0]==4){
+  p.innerHTML='<img src="images/visa.png"/>';
+}else{
+  p.innerHTML='<img src="images/invalid.png"/>';
+}
+card=Number(card);
 
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
@@ -223,25 +225,27 @@ function credit() {
 
 function guess() {
 
-  let answer = Math.floor((Math.random() * 1000) + 1);
-  console.log(answer);
-
-  let guess = prompt("Guess of a Random Integer between 1 and 1000");
-
-  let tries = 1;
-  while (guess != answer) {
-    if (guess > answer && guess > 0  && guess <= 1000 && Number.isInteger(Number(guess))) {
-      guess = prompt("Your guess was too high. Try again.");
-      tries++;
-    } else if (guess < answer && guess > 0 && Number.isInteger(Number(guess))) {
-      guess = prompt("Your guess was too low. Try again.");
-      tries++;
-    } 
+let random=Math.floor(Math.random()*1000)+1;
+let number=0;
+let guesses=0;
+let output="";
+let p=document.getElementById("guess-output");
+while(number!=random){
+  if((number<1 || number>1000 || number%1!=0) && guesses>0){
+    number=Number(prompt("Invalid. Try Again."));
+    guesses--;
+  }else if(guesses==0){
+    number=Number(prompt("Guess an Integer between 1 to 1000."));
+  }else if(number<random){
+    number=Number(prompt("That guess was too low. Try again."));
+  }else if(number>random){
+    number=Number(prompt("That guess was too high. Try again."));
   }
-  if (guess == answer) {
-    let correct = document.getElementById("guess-output");
-    correct.innerHTML = "Correct Answer! It took you " + tries + " tries!";
-  }
+  guesses++;
+}
+  output="Correct Answer! The number was " + random;
+  output+="<br/>It took you" + guesses + " guesses";
+  p.innerHTML=output;
 
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
