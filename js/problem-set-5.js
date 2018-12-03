@@ -160,32 +160,31 @@ function credit() {
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
 
-card=prompt("Input the credit card number.");
-let p=document.getElementById("credit-output");
-let sum=0;
-for(let a = 0; a<card.length; a++){
-  if(a%2==card.length%2){
-    if(card[a]>=5){
-      sum+=Number(card[a])*2-9;
-    }else{
-      sum+=Number(card[a])*2;
+  card=prompt("Enter a Credit Card Number");
+  let p=document.getElementById("credit-output");
+  let sum=0;
+  let cardNumber;
+    for(let a=card.length-2; a >= 0; a -= 2){
+      if((Number(card[i]))*2 > 9){
+        cardNumber = String(Number(card[a])*2);
+        sum += Number(cardNumber[0]) + Number(cardNumber[1]);
+      }else{
+        sum += Number(card[i])*2;
+      }
     }
+    for(a=card.length-1; a >= 0; a -= 2){
+      sum += Number(card[a]);
+    }
+  if(card.length == 15 && card[0] == "3" && card[1] == "4" && sum%10==0 || card.length == 15 && card[0] == "3" && card[1]=="7" && sum%10==0){
+    p.innerHTML = "<img src='images/amex.png'>";
+  }else if(card.length == 16 && card[0] == "5" && card[1]>="1" && card[1]<="5" && sum%10==0){
+    p.innerHTML = "<img src='images/mastercard.png'>";
+  }else if(card[0] == "4" && card.length == 13 && sum%10 == 0 || card[0] == "4" && card.length == 16 && sum % 10 == 0){
+    p.innerHTML = "<img src='images/visa.png'>";
   }else{
-    sum+=Number(card[a]);
- }
-}sum%=10;
-if(sum!=0){
-  p.innerHTML='<img src="images/invalid.png"/>';
-}else if(card.length==15 && card[0]==3 && (card[1]==4 || card[1]==7)){
-  p.innerHTML='<img src="images/amex.png"/>';
-}else if(card.length==16 && card[0]==5 && 0<card[1]<6){
-  p.innerHTML='<img src="images/mastercard.png"/>';
-}else if((card.length==13 || card.length==16) && card[0]==4){
-  p.innerHTML='<img src="images/visa.png"/>';
-}else{
-  p.innerHTML='<img src="images/invalid.png"/>';
-}
-card=Number(card);
+    p.innerHTML = "<img src='images/invalid.png'>";
+  }
+  card = Number(card);
 
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
