@@ -304,7 +304,7 @@ function hurricane() {
   }else if (windspeed>=39){
     document.getElementById('hurricane-output').innerHTML='Tropical Storm';
   }else if (windspeed<=38){
-    document.getElementById('hurricane-output').innerHTML='The Wind is Not Strong';
+    document.getElementById('hurricane-output').innerHTML='The skies are calm...';
   }
   
   ///////////////////////////////// DO NOT MODIFY
