@@ -401,6 +401,38 @@ function reportCard() {
   let homeworkTotal = 0; // DO NOT MODIFY
   ///////////////////////// DO NOT MODIFY
 
+  let p=document.getElementById("report-card-output");
+  let grades=-2;
+  while(grades!=-1){
+  while((grades<0 || grades>100 || grades*10%1!=0) && grades!=-1){
+      grades=Number(prompt("Enter a Test Grade between 0.0 to 100.0"));
+    }if(grades!=-1){
+      tests++;
+      testTotal+=grades;
+      grades=-2   ;
+    }
+  }grades=-2;
+  while(grades!=-1){
+    while((grades<0 || grades>100 || grades*10%1!=0) && grades!=-1){
+      grades=Number(prompt("Enter a Quiz Grade between 0.0 to 100.0"))
+    }if(grades!=-1){
+      quizzes++;
+      quizTotal+=grades;
+      grades=-2;
+    }
+  }grades=-2;
+  while(grades!=-1){
+    while((grades<0 || grades>100 || grades*10%1!=0) && grades!=-1){
+      grades=Number(prompt("Enter a Homework Grade between 0.0 to 100.0"))
+    }if(grades!=-1){
+      homework++;
+      homeworkTotal+=grades;
+      grades=-2;
+    }
+  }let gradeAverage=testTotal*0.6/tests+quizTotal*0.3/quizzes+homeworkTotal*0.1/homework;
+  let result = `Tests: ${(testTotal/tests).toFixed(2)}<br/>Quizzes: ${(quizTotal/quizzes).toFixed(2)}<br/>Homework: ${(homeworkTotal/homework).toFixed(2)}<br/>Grade: ${gradeAverage.toFixed(2)}`;
+  p.innerHTML=result;
+  
   /*
    * NOTE: The 'testTotal', 'quizTotal', and 'homeworkTotal' variables
    *       should be representative of the sum of the test scores, quiz
