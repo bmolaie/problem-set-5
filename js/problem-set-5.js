@@ -160,28 +160,28 @@ function credit() {
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
 
-card=prompt("Enter a Credit Card Number.");
-let p=document.getElementById("credit-output");
-let sum=0;
-for(let a = 0; a<cardLength; a++){
-  if(a%2==cardLength%2){
-    if(card[a]>=5){
-      sum+=Number(card[a])*2-9;
+card=prompt("Enter a Credit Card Number");
+let p = document.getElementById("credit-output");
+let sum = 0;
+for(let i = 0; i<card.length; i++){
+  if(i%2==card.length%2){
+    if(card[i]>=5){
+      sum+=Number(card[i])*2-9;
     }else{
-      sum+=Number(card[a])*2;
+      sum+=Number(card[i])*2;
     }
   }else{
-    sum+=Number(card[a]);
+    sum+=Number(card[i]);
   }
 }
 sum%=10;
 if(sum!=0){
   p.innerHTML='<img src="images/invalid.png"/>';
-}else if(cardLength==15 && card[0]==3 && (card[1]==4 || card[1]==7)){
+}else if(card.length==15 && card[0]==3 && (card[1]==4 || card[1]==7)){
   p.innerHTML='<img src="images/amex.png"/>';
-}else if(cardLength==16 && card[0]==5 && 0<card[1]<6){
+}else if(card.length==16 && card[0]==5 && 0<card[1]<6){
   p.innerHTML='<img src="images/mastercard.png"/>';
-}else if((cardLength==13 || cardLength==16) && card[0]==4){
+}else if((card.length==13 || card.length==16) && card[0]==4){
   p.innerHTML='<img src="images/visa.png"/>';
 }else{
   p.innerHTML='<img src="images/invalid.png"/>';
@@ -243,8 +243,8 @@ while(number!=random){
   }
   guesses++;
 }
-  output="Correct Answer! The number was " + random;
-  output+="<br/>It took you" + guesses + " guesses";
+  output="Correct Answer! The number was " + random + ".";
+  output+="<br/>It took you " + guesses + " guesses";
   p.innerHTML=output;
 
   ////////////////// DO NOT MODIFY
@@ -294,7 +294,7 @@ function hurricane() {
   }else if (windspeed>=74){
     document.getElementById('hurricane-output').innerHTML='Category 1 Hurricane.';
   }else if (windspeed>=39){
-    document.getElementById('hurricane-output').innerHTML='Tropical Storm';
+    document.getElementById('hurricane-output').innerHTML='Tropical Storm.';
   }else if (windspeed<=38){
     document.getElementById('hurricane-output').innerHTML='The skies are calm...';
   }
@@ -329,7 +329,7 @@ function gymnastics() {
   let scores = []; // DO NOT MODIFY
   /////////////////// DO NOT MODIFY
   
-  let score;
+let score;
 let total2=0;
 let discarded = [];
 let k;
@@ -405,36 +405,42 @@ function reportCard() {
   let homeworkTotal = 0; // DO NOT MODIFY
   ///////////////////////// DO NOT MODIFY
 
-  let p=document.getElementById("report-card-output");
-  let grades=-2;
-  while(grades!=-1){
-  while((grades<0 || grades>100 || grades*10%1!=0) && grades!=-1){
-      grades=Number(prompt("Enter a Test Grade between 0.0 to 100.0"));
-    }if(grades!=-1){
+let p = document.getElementById("report-card-output");
+  let grade = -2;
+  while(grade!=-1){
+    while((grade<0 || grade>100 || grade*10%1!=0) && grade!=-1){
+      grade = Number(prompt("Enter a test grade from 0.0 to 100.0."));
+    }
+    if(grade!=-1){
       tests++;
-      testTotal+=grades;
-      grades=-2   ;
+      testTotal+=grade;
+      grade=-2   ;
     }
-  }grades=-2;
-  while(grades!=-1){
-    while((grades<0 || grades>100 || grades*10%1!=0) && grades!=-1){
-      grades=Number(prompt("Enter a Quiz Grade between 0.0 to 100.0"))
-    }if(grades!=-1){
+  }
+  grade=-2;
+  while(grade!=-1){
+    while((grade<0 || grade>100 || grade*10%1!=0) && grade!=-1){
+      grade = Number(prompt("Enter a quiz grade from 0.0 to 100.0."))
+    }
+    if(grade!=-1){
       quizzes++;
-      quizTotal+=grades;
-      grades=-2;
+      quizTotal+=grade;
+      grade=-2;
     }
-  }grades=-2;
-  while(grades!=-1){
-    while((grades<0 || grades>100 || grades*10%1!=0) && grades!=-1){
-      grades=Number(prompt("Enter a Homework Grade between 0.0 to 100.0"))
-    }if(grades!=-1){
-      homework++;
-      homeworkTotal+=grades;
-      grades=-2;
+  }
+  grade=-2;
+  while(grade!=-1){
+    while((grade<0 || grade>100 || grade*10%1!=0) && grade!=-1){
+      grade = Number(prompt("Enter a homework grade from 0.0 to 100.0."))
     }
-  }let gradeAverage=testTotal*0.6/tests+quizTotal*0.3/quizzes+homeworkTotal*0.1/homework;
-  let result = `Tests: ${(testTotal/tests).toFixed(2)}<br/>Quizzes: ${(quizTotal/quizzes).toFixed(2)}<br/>Homework: ${(homeworkTotal/homework).toFixed(2)}<br/>Grade: ${gradeAverage.toFixed(2)}`;
+    if(grade!=-1){
+      homeworks++;
+      homeworkTotal+=grade;
+      grade=-2;
+    }
+  }
+  let gradeAverage=testTotal*0.6/tests+quizTotal*0.3/quizzes+homeworkTotal*0.1/homeworks;
+  let result = `Tests: ${(testTotal/tests).toFixed(2)}<br/>Quizzes: ${(quizTotal/quizzes).toFixed(2)}<br/>Homework: ${(homeworkTotal/homeworks).toFixed(2)}<br/>Grade: ${gradeAverage.toFixed(2)}`;
   p.innerHTML=result;
   
   /*
