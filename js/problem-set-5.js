@@ -409,30 +409,30 @@ let testGrade;
    let quizGrade;
    let homeworkGrade;
    while(testGrade!=Number("-1")){
-     testGrade=Number(prompt("Please enter your test grade. Type '-1' to signify that you have no more grades to enter."));
+     testGrade=Number(prompt("Please Enter a Test Grade between 0.0 to 100.0. Type '-1' to Signify that there are No More Grades to Enter."));
      if(testGrade!=Number("-1")){
        while(testGrade > 100 || testGrade < 0){
-         testGrade=Number(prompt("Please reenter your test grade. Remember, it must be on a scale from 1 to 100."))
+         testGrade=Number(prompt("Re-enter the Test Grade on a Scale of 0.0 to 100.00"))
        }
        tests++;
        testTotal+=testGrade;
      }else{}
    }
    while(quizGrade!=Number("-1")){
-     quizGrade=Number(prompt("Please enter your quiz grade. Type '-1' to signify that you have no more grades to enter."));
+     quizGrade=Number(prompt("Enter a Quiz Grade. Type '-1' to Signify that there are No More Grades to Enter."));
      if(quizGrade!=Number("-1")){
        while(quizGrade > 100 || quizGrade < 0){
-         quizGrade=Number(prompt("Please reenter your quiz grade. Remember, it must be on a scale from 1 to 100."))
+         quizGrade=Number(prompt("Re-enter the Quiz Grade on a Scale of 0.0 to 100.00"))
        }
        quizzes++;
        quizTotal+=quizGrade;
      }else{}
    }
    while(homeworkGrade!=Number("-1")){
-     homeworkGrade=Number(prompt("Please enter your homework grade. Type '-1' to signify that you have no more grades to enter."));
+     homeworkGrade=Number(prompt("Enter a Homework Grade. Type '-1' to Signify that there are No More Grades to Enter."));
      if(homeworkGrade!=Number("-1")){
        while(homeworkGrade > 100 || homeworkGrade < 0){
-         homeworkGrade=Number(prompt("Please reenter your homework grade. Remember, it must be on a scale from 1 to 100."))
+         homeworkGrade=Number(prompt("Re-enter the Homework Grade on a Scale of 0.0 to 100.00"))
        }
        homeworks++;
        homeworkTotal+=homeworkGrade;
