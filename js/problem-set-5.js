@@ -163,15 +163,15 @@ function credit() {
 card=prompt("Enter a Credit Card Number");
 let p = document.getElementById("credit-output");
 let sum = 0;
-for(let i = 0; i<card.length; i++){
-  if(i%2==card.length%2){
-    if(card[i]>=5){
-      sum+=Number(card[i])*2-9;
+for(let a = 0; a<card.length; a++){
+  if(a%2==card.length%2){
+    if(card[a]>=5){
+      sum+=Number(card[a])*2-9;
     }else{
-      sum+=Number(card[i])*2;
+      sum+=Number(card[a])*2;
     }
   }else{
-    sum+=Number(card[i]);
+    sum+=Number(card[a]);
   }
 }
 sum%=10;
@@ -244,7 +244,7 @@ while(number!=random){
   guesses++;
 }
   output="Correct Answer! The number was " + random + ".";
-  output+="<br/>It took you " + guesses + " guesses";
+  output+="<br/>It took you " + guesses + " guesses.";
   p.innerHTML=output;
 
   ////////////////// DO NOT MODIFY
@@ -405,50 +405,65 @@ function reportCard() {
   let homeworkTotal = 0; // DO NOT MODIFY
   ///////////////////////// DO NOT MODIFY
 
-let addTest;
-tests = -1;
-for(testTotal = 1; addTest != -1; testTotal = testTotal + addTest){
-  addTest = prompt(`Input a number TEST grade from 0.0 to 100.0. When completed type "-1".`);
-    for(addTest = addTest; addTest < 0 && addTest != -1 || addTest > 100; addTest = addTest){
-      addTest = prompt(`PLEASE input a VALID number TEST grade from 0 to 100. When completed type "-1".`);
-    }
-  addTest = parseInt(addTest);
-  tests = tests + 1;
+testscore = prompt('Please enter a positive number between 1 and 100 for your test score. Enter -1 if you have entered all of your scores.');
+   while (testscore) {
+     testscore = parseFloat(testscore);
+
+  if (testscore == -1){
+    testscore = false;
+    break;
+  }
+else if(testscore <= 100.00 && 0.0 <= testscore)
+  {
+    tests += 1;
+    testTotal += testscore;
+  }
+  else{
+  }
+  testscore = prompt('Please enter a positive number between 1 and 100 for your test score. Enter -1 if you have entered all of your scores.')
 }
-let testAverage = testTotal / tests;
-testAverage = testAverage.toFixed(2);
+quizscore = prompt('Please enter a positive number between 1 and 100 for your quiz score. Enter -1 if you have entered all of your scores.');
+while (quizscore) {
+  quizscore = parseFloat(quizscore);
 
-let addQuiz;
-quizzes = -1;
-for(quizTotal = 1; addQuiz != -1; quizTotal = quizTotal + addQuiz){
-  addQuiz = prompt(`Input a number QUIZ grade from 0.0 to 100.0. When completed type "-1".`);
-    for(addQuiz = addQuiz; addQuiz < 0 && addQuiz != -1 || addQuiz > 100; addQuiz = addQuiz){
-      addQuiz = prompt(`PLEASE input a VALID number QUIZ grade from 0 to 100. When completed type "-1".`);
-    }
-  addQuiz = parseInt(addQuiz);
-  quizzes = quizzes + 1;
+if (quizscore == -1){
+ quizscore = false;
+ break;
+  }
+else if(quizscore <= 100.00 && 0.0 <= quizscore)
+{
+ quizzes += 1;
+ quizTotal += quizscore;
 }
-let quizAverage = quizTotal / quizzes;
-quizAverage = quizAverage.toFixed(2);
-
-let addHW;
-homeworks = -1;
-for(homeworkTotal = 1; addHW != -1; homeworkTotal = homeworkTotal + addHW){
-  addHW = prompt(`Input a number HOMEWORK grade from 0.0 to 100.0. When completed type "-1".`);
-    for(addHW = addHW; addHW < 0 && addHW != -1 || addHW > 100; addHW = addHW){
-      addHW = prompt(`PLEASE input a VALID number HOMEWORK grade from 0 to 100. When completed type "-1".`);
-    }
-  addHW = parseInt(addHW);
-  homeworks = homeworks + 1;
+else{
 }
-let homeworkAverage = homeworkTotal / homeworks;
-homeworkAverage = homeworkAverage.toFixed(2);
+quizscore = prompt('Please enter a positive number between 1 and 100 for your quiz score. Enter -1 if you have entered all of your scores.')
+}
 
-let grade = (testAverage * 0.6) + (quizAverage * 0.3) + (homeworkAverage * 0.1);
-grade = grade.toFixed(2);
+homeworkscore = prompt('Please enter a positive number between 1 and 100 for your homework score. Enter -1 if you have entered all of your scores.');
+while (homeworkscore) {
+  homeworkscore = parseFloat(homeworkscore);
 
-var div=document.getElementById('report-card-output');
-div.innerHTML=(`Tests: ${testAverage}</br>Quizzes: ${quizAverage}</br>Homework: ${homeworkAverage}</br>Grade: ${grade}`);
+if (homeworkscore == -1){
+ homeworkscore = false;
+ break;
+}
+else if(homeworkscore <= 100.00 && 0.0 <= homeworkscore)
+{
+ homeworks += 1;
+ homeworkTotal += homeworkscore;
+}
+else{
+}
+homeworkscore = prompt('Please enter a positive number between 1 and 100 for your homework score. Enter -1 if you have entered all of your scores.')
+}
+
+testAverage = testTotal/tests;
+quizAverage = quizTotal/quizzes;
+homeworkAverage = homeworkTotal/homeworks;
+totalAverage = (testAverage * 0.6) + (quizAverage * 0.3) + (homeworkAverage * 0.1);
+
+document.getElementById("report-card-output").innerHTML = "Tests: " + testAverage.toFixed(2) + "</br>Quizzes: " + quizAverage.toFixed(2) + "</br>Homework: " + homeworkAverage.toFixed(2) + "</br>Grade: " + totalAverage.toFixed(2);
   
   /*
    * NOTE: The 'testTotal', 'quizTotal', and 'homeworkTotal' variables
