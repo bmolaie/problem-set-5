@@ -404,44 +404,6 @@ function reportCard() {
   let quizTotal = 0; ////// DO NOT MODIFY
   let homeworkTotal = 0; // DO NOT MODIFY
   ///////////////////////// DO NOT MODIFY
-
-  let p = document.getElementById("report-card-output");
-  let grade = -2;
-  while(grade!=-1){
-    while((grade<0 || grade>100 || grade*10%1!=0) && grade!=-1){
-      grade = Number(prompt("Enter a test grade from 0.0 to 100.0."));
-    }
-    if(grade!=-1){
-      tests++;
-      testTotal+=grade;
-      grade=-2   ;
-    }
-  }
-  grade=-2;
-  while(grade!=-1){
-    while((grade<0 || grade>100 || grade*10%1!=0) && grade!=-1){
-      grade = Number(prompt("Enter a quiz grade from 0.0 to 100.0."))
-    }
-    if(grade!=-1){
-      quizzes++;
-      quizTotal+=grade;
-      grade=-2;
-    }
-  }
-  grade=-2;
-  while(grade!=-1){
-    while((grade<0 || grade>100 || grade*10%1!=0) && grade!=-1){
-      grade = Number(prompt("Enter a homework grade from 0.0 to 100.0."))
-    }
-    if(grade!=-1){
-      homeworks++;
-      homeworkTotal+=grade;
-      grade=-2;
-    }
-  }
-  let gradeAverage=testTotal*0.6/tests+quizTotal*0.3/quizzes+homeworkTotal*0.1/homeworks;
-  let result = `Tests: ${(testTotal/tests).toFixed(2)}<br/>Quizzes: ${(quizTotal/quizzes).toFixed(2)}<br/>Homework: ${(homeworkTotal/homeworks).toFixed(2)}<br/>Grade: ${gradeAverage.toFixed(2)}`;
-  p.innerHTML=result;
   
   /*
    * NOTE: The 'testTotal', 'quizTotal', and 'homeworkTotal' variables
@@ -455,6 +417,38 @@ function reportCard() {
   let homeworks = 0; // DO NOT MODIFY
   ///////////////////// DO NOT MODIFY
 
+  let p=document.getElementById("report-card-output");
+  let grades=-2;
+  while(grades!=-1){
+    while((grades<0 || grades>100 || grades*10%1!=0) && grades!=-1){
+      grades=Number(prompt("Enter a Test Grade from 0.0 to 100.0. Enter -1 when you have entered all scores."));
+    }if(grades!=-1){
+      tests++;
+      testTotal+=grades;
+      grades=-2   ;
+    }
+  }grades=-2;
+  while(grades!=-1){
+    while((grades<0 || grades>100 || grades*10%1!=0) && grades!=-1){
+      grades=Number(prompt("Enter a Quiz Grade from 0.0 to 100.0. Enter -1 when you have entered all scores."))
+    }if(grades!=-1){
+      quizzes++;
+      quizTotal+=grades;
+      grades=-2;
+    }
+  }grades=-2;
+  while(grades!=-1){
+    while((grades<0 || grades>100 || grades*10%1!=0) && grades!=-1){
+      grades=Number(prompt("Enter a Homework Grade from 0.0 to 100.0. Enter -1 when you have entered all scores."))
+    }if(grades!=-1){
+      homeworks++;
+      homeworkTotal+=grades;
+      grades=-2;
+    }
+  }let gradeAverage=testTotal*0.6/tests+quizTotal*0.3/quizzes+homeworkTotal*0.1/homeworks;
+  let result = `Tests: ${(testTotal/tests).toFixed(2)}<br/>Quizzes: ${(quizTotal/quizzes).toFixed(2)}<br/>Homework: ${(homeworkTotal/homeworks).toFixed(2)}<br/>Grade: ${gradeAverage.toFixed(2)}`;
+  p.innerHTML=result;
+  
   /*
    * NOTE: The 'tests', 'quizzes', and 'homeworks' variables should be
    *       representative of the number of tests, quizzes, and homework
