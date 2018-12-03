@@ -284,7 +284,7 @@ function guess() {
  * All output should be displayed on the page, not printed to the console.
  */
 
-function hurricane() {
+function hurricane() { 
 
   ///////////////// DO NOT MODIFY
   let windspeed; // DO NOT MODIFY
