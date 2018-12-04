@@ -342,15 +342,11 @@ for(let b = 0; b<6; b++){
     score=Number(prompt("Invalid. Re-enter a score from 0.0 to 10.0."));
   }else{
     score=Number(prompt("Enter a Score from 0.0 to 10.0."));
-  }
-    a=1
-  }
-  scores.push(score);
-}
-for(let c = 0; c<6; c++){
+  }a=1
+  }scores.push(score);
+}for(let c = 0; c<6; c++){
   total+=scores[c];
-}
-total2=total;
+}total2=total;
 discarded.push(Math.min(...scores));
 total2-=Math.min(...scores);
 discarded.push(Math.max(...scores));
